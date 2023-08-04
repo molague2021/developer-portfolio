@@ -21,54 +21,63 @@ const StyledIcon = styled(Icon)`
 
 export const PortfolioHeader = () => {
   return (
-    <Grid container justifyContent="space-between" alignItems="center">
-      <StyledTypography fontFamily="Space Grotesk">adamkeyes</StyledTypography>
+    <Grid item>
       <Grid
         item
         display="flex"
+        alignItems="center"
         justifyContent="space-between"
-        sx={{ minWidth: '200px' }}
       >
-        <Link
-          href="https://github.com/molague2021"
-          target="_blank"
-          rel="noopener"
+        <StyledTypography fontFamily="Space Grotesk">
+          adamkeyes
+        </StyledTypography>
+        <Grid
+          item
+          display="flex"
+          justifyContent="space-between"
+          sx={{ minWidth: '200px', zIndex: 9, marginRight: '29.51px' }}
         >
-          <StyledIcon>
-            <GitHubIcon />
-          </StyledIcon>
-        </Link>
-        <Link>
-          <StyledIcon>
-            <img
-              src={front_end_dev_logo}
-              style={{
-                width: '25px',
-                height: '22px',
-                flexShrink: 0,
-                fill: 'var(--white, #FFF)',
-              }}
-            />
-          </StyledIcon>
-        </Link>
-        <Link
-          href="https://www.linkedin.com/in/martin-olague-4a0890203/"
-          target="_blank"
-          rel="noopener"
-        >
-          <StyledIcon>
-            <LinkedInIcon />
-          </StyledIcon>
-        </Link>
-        <Link
-          href="https://twitter.com/molague23"
-          target="_blank"
-          rel="noopener"
-        >
-          <StyledIcon>
-            <TwitterIcon />
-          </StyledIcon>
-        </Link>
+          <Link
+            href="https://github.com/molague2021"
+            target="_blank"
+            rel="noopener"
+          >
+            <StyledIcon>
+              <GitHubIcon />
+            </StyledIcon>
+          </Link>
+          <Link>
+            <StyledIcon>
+              <img
+                src={front_end_dev_logo}
+                style={{
+                  width: '25px',
+                  height: '22px',
+                  flexShrink: 0,
+                  fill: 'var(--white, #FFF)',
+                }}
+              />
+            </StyledIcon>
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/martin-olague-4a0890203/"
+            target="_blank"
+            rel="noopener"
+          >
+            <StyledIcon>
+              <LinkedInIcon />
+            </StyledIcon>
+          </Link>
+          <Link
+            href="https://twitter.com/molague23"
+            target="_blank"
+            rel="noopener"
+          >
+            <StyledIcon>
+              <TwitterIcon />
+            </StyledIcon>
+          </Link>
+        </Grid>
       </Grid>
     </Grid>
   );

@@ -11,14 +11,8 @@ import {
 } from '@mui/material';
 
 import image_profile_desktop from '../../assets/image_profile_desktop.png';
-
-const StyledOval = styled('div')`
-  width: 530px;
-  height: 80px;
-  border-radius: 100%;
-  position: absolute;
-  border: 1px solid var(--white, #fff);
-`;
+import pattern_circle from '../../assets/pattern_circle.svg';
+import pattent_rings from '../../assets/pattern_rings.svg';
 
 const StyledHeading = styled(Typography)`
   color: var(--white, #fff);
@@ -70,27 +64,32 @@ const StyledButtonUnderline = styled('div')`
 
 export const PortfolioAboutMe = () => {
   return (
-    <>
+    <Grid sx={{ height: '688px', position: 'relative' }}>
       <Grid
         container
-        flexDirection="column"
         sx={{
           width: '530px',
           height: '129px',
+          flexShrink: '0',
           position: 'absolute',
-          top: '133px',
-          left: '-100px',
+          marginTop: '62px',
+          left: -265,
         }}
       >
-        <StyledOval />
-        <StyledOval sx={{ marginTop: '12px' }} />
-        <StyledOval sx={{ marginTop: '25px' }} />
-        <StyledOval sx={{ marginTop: '37px' }} />
-        <StyledOval sx={{ marginTop: '49px' }} />
+        <img
+          src={pattent_rings}
+          style={{ width: '530px', height: '129px', flexShrink: '0' }}
+        />
       </Grid>
       <Stack
         whiteSpace="nowrap"
-        sx={{ marginTop: '127px', width: '706px', height: '303px' }}
+        sx={{
+          marginTop: '127px',
+          width: '706px',
+          height: '303px',
+          position: 'relative',
+          zIndex: 2,
+        }}
       >
         <StyledHeading>Nice to meet you!</StyledHeading>
         <Grid item display="flex">
@@ -101,32 +100,27 @@ export const PortfolioAboutMe = () => {
           </Stack>
         </Grid>
         <Grid sx={{ width: '445px', marginTop: '37px' }}>
-          <StyledBody sx={{ textWrap: 'wrap' }}>
+          <StyledBody sx={{ textWrap: 'wrap', textAlign: 'left' }}>
             Based in the UK, I’m a front-end developer passionate about building
             accessible web apps that users love.
           </StyledBody>
         </Grid>
       </Stack>
-      <Stack
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="flex-start"
-        sx={{
-          marginTop: '66px',
-          width: '120px',
-          gap: '10px',
-        }}
-      >
-        <StyledContactMe>CONTACT ME</StyledContactMe>
-        <StyledButtonUnderline />
-      </Stack>
-      {/* <Grid sx={{ position: 'absolute' }}>
-        <img
-          src={image_profile_desktop}
-          style={{ width: '444.876px', height: '720px', flexShrink: '0' }}
-        />
-      </Grid> */}
-    </>
+      <Grid item display="flex" sx={{ marginTop: '66px' }}>
+        <Stack
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="flex-start"
+          sx={{
+            width: '120px',
+            gap: '10px',
+          }}
+        >
+          <StyledContactMe>CONTACT ME</StyledContactMe>
+          <StyledButtonUnderline />
+        </Stack>
+      </Grid>
+    </Grid>
   );
 };
