@@ -4,6 +4,7 @@ import { Grid, Stack } from '@mui/material';
 import { PortfolioHeader } from './components/PortfolioHeader/PortfolioHeader';
 import { PortfolioAboutMe } from './components/PortfolioAboutMe/PortfolioAboutMe';
 import { PortfolioExperience } from './components/PortfolioExperince/PortfolioExperience';
+import { PortfolioProjects } from './components/PortfolioProjects/PortfolioProjects';
 import image_profile_desktop from './assets/image_profile_desktop.png';
 import pattern_circle from './assets/pattern_circle.svg';
 
@@ -50,6 +51,7 @@ export const App = () => {
 			</Stack>
 			<PortfolioAboutMe />
 			<PortfolioExperience />
+			<PortfolioProjects />
 		</Grid>
 	);
 };
