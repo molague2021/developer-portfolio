@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, styled, Stack, Typography } from '@mui/material';
 
 import { portfolioExperienceList } from './constants/portfolioExperience';
+import pattent_rings from '../../assets/pattern_rings.svg';
 
 const StyledDivider = styled('div')`
 	width: 1110px;
@@ -37,19 +38,13 @@ const StyledBody = styled(Typography)`
 
 export const PortfolioExperience = () => {
 	return (
-		<Stack
-			display='flex'
-			justifyContent='space-between'
-			sx={{
-				marginTop: '65px',
-				height: '327px',
-				width: '1110px',
-				flexShrink: 0,
-			}}
+		<Grid
+			container
+			alignContent='space-between'
+			sx={{ height: '327px', position: 'relative' }}
 		>
 			<StyledDivider />
 			<Grid
-				container
 				display='flex'
 				flexWrap='wrap'
 				justifyContent='space-between'
@@ -73,6 +68,21 @@ export const PortfolioExperience = () => {
 					);
 				})}
 			</Grid>
-		</Stack>
+			<Grid
+				sx={{
+					width: '530px',
+					height: '129px',
+					flexShrink: '0',
+					position: 'absolute',
+					marginTop: '252px',
+					marginLeft: '979px',
+				}}
+			>
+				<img
+					src={pattent_rings}
+					style={{ width: '530px', height: '129px', flexShrink: '0' }}
+				/>
+			</Grid>
+		</Grid>
 	);
 };
