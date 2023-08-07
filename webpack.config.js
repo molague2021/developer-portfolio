@@ -31,6 +31,11 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg)$/i, // (1)
         type: 'asset/resource',
       },
+      {
+        test: /\.(webp)$/,
+        exclude: /node_modules/,
+        use: [{ loader: 'file-loader' }],
+      },
     ],
   },
 };
