@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, styled, Stack, Typography } from '@mui/material';
 
-import { portfolioExperienceList } from './constants/portfolioExperience';
+import { portfolioExperienceList } from '../../constants/portfolioExperience';
 import pattent_rings from '../../assets/pattern_rings.svg';
 
 const StyledDivider = styled('div')`
