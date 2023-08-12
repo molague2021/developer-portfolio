@@ -1,5 +1,12 @@
 import React from 'react';
-import { Stack, Grid, Typography, styled, TextField } from '@mui/material';
+import {
+  Stack,
+  Grid,
+  Typography,
+  styled,
+  TextField,
+  Button,
+} from '@mui/material';
 import pattent_rings from '../../assets/pattern_rings.svg';
 
 const StyledContactMe = styled(Typography)`
@@ -51,6 +58,9 @@ const StyledSubtitle = styled(Typography)`
 
 const StyledTextField = styled(TextField)`
   width: 445px;
+  .MuiInput-root {
+    height: 43px;
+  }
   .MuiInput-input {
     color: white;
     padding: 0 24px 17px;
@@ -106,6 +116,21 @@ const StyledMultiLineTextField = styled(TextField)`
     transition: none;
   }
 `;
+
+const StyledButton = styled(Button)`
+  &.MuiButton-root {
+    color: white;
+    font-family: Space Grotesk;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px; /* 162.5% */
+    letter-spacing: 2.286px;
+  }
+  &.MuiButton-root:hover {
+    color: #4ee1a0;
+  }
+`;
 const SUBTITLE = `I would love to hear about your project and how I could help. Please fill in the form, and I’ll get back to you as soon as possible.`;
 
 export const ContactMeSection = () => {
@@ -147,7 +172,7 @@ export const ContactMeSection = () => {
         <Stack
           display="flex"
           alignItems="flex-start"
-          gap="36px"
+          gap="32px"
           sx={{ width: '445px', height: '327px' }}
         >
           <Stack>
@@ -174,19 +199,26 @@ export const ContactMeSection = () => {
               variant="standard"
             />
           </Stack>
-          <Stack
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="flex-end"
-            sx={{
-              width: '144px',
-              gap: '10px',
-            }}
+          <Grid
+            item
+            sx={{ display: 'flex', width: '100%', justifyContent: 'flex-end' }}
           >
-            <StyledContactMe>SEND MESSAGE</StyledContactMe>
-            <StyledButtonUnderline />
-          </Stack>
+            <Stack
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              alignItems="flex-end"
+              sx={{
+                width: '144px',
+                gap: '10px',
+              }}
+            >
+              <StyledButton sx={{ padding: '0', color: 'white' }}>
+                SEND MESSAGE
+              </StyledButton>
+              <StyledButtonUnderline />
+            </Stack>
+          </Grid>
         </Stack>
       </Grid>
     </Grid>

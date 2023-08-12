@@ -4,7 +4,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
-import front_end_dev_logo from '../../assets/front_end_dev_logo.png';
+import icon_frontend_mentor from '../../assets/icon_frontend_mentor.svg';
 
 const StyledTypography = styled(Typography)`
   font-family: Space Grotesk;
@@ -17,6 +17,15 @@ const StyledTypography = styled(Typography)`
 
 const StyledIcon = styled(Icon)`
   color: #ffffff;
+`;
+
+const StyledLink = styled(Link)`
+  .MuiLink-root {
+    color: white;
+  }
+  .MuiLink-root:hover {
+    color: #4ee1a0;
+  }
 `;
 
 export const PortfolioHeader = () => {
@@ -37,19 +46,19 @@ export const PortfolioHeader = () => {
           justifyContent="space-between"
           sx={{ minWidth: '200px', zIndex: 9, marginRight: '29.51px' }}
         >
-          <Link
+          <StyledLink
             href="https://github.com/molague2021"
             target="_blank"
             rel="noopener"
           >
-            <StyledIcon>
+            <Icon>
               <GitHubIcon />
-            </StyledIcon>
-          </Link>
+            </Icon>
+          </StyledLink>
           <Link>
             <StyledIcon>
               <img
-                src={front_end_dev_logo}
+                src={icon_frontend_mentor}
                 style={{
                   width: '25px',
                   height: '22px',
