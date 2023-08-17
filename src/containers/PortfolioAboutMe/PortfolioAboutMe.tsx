@@ -56,6 +56,22 @@ const StyledContactMe = styled(Typography)`
   }
 `;
 
+const StyledButton = styled(Button)`
+  &.MuiButton-root {
+    color: white;
+    font-family: Space Grotesk;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px; /* 162.5% */
+    letter-spacing: 2.286px;
+    text-wrap: nowrap;
+  }
+  &.MuiButton-root:hover {
+    color: #4ee1a0;
+  }
+`;
+
 const StyledButtonUnderline = styled('div')`
   width: 120px;
   height: 2px;
@@ -111,13 +127,12 @@ export const PortfolioAboutMe = () => {
           display="flex"
           flexDirection="column"
           justifyContent="center"
-          alignItems="flex-start"
           sx={{
             width: '120px',
             gap: '10px',
           }}
         >
-          <StyledContactMe>CONTACT ME</StyledContactMe>
+          <StyledButton>CONTACT ME</StyledButton>
           <StyledButtonUnderline />
         </Stack>
       </Grid>

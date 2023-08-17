@@ -1,10 +1,7 @@
 import React from 'react';
-import { Stack, Grid, Typography, styled, Icon, Link } from '@mui/material';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import TwitterIcon from '@mui/icons-material/Twitter';
+import { Grid, Typography, styled } from '@mui/material';
 
-import icon_frontend_mentor from '../../assets/icon_frontend_mentor.svg';
+import { SocialMedia } from '../../components/SocialMedia';
 
 const StyledTypography = styled(Typography)`
   font-family: Space Grotesk;
@@ -13,19 +10,6 @@ const StyledTypography = styled(Typography)`
   font-weight: 700;
   line-height: 32px; /* 100% */
   letter-spacing: -0.444px;
-`;
-
-const StyledIcon = styled(Icon)`
-  color: #ffffff;
-`;
-
-const StyledLink = styled(Link)`
-  .MuiLink-root {
-    color: white;
-  }
-  .MuiLink-root:hover {
-    color: #4ee1a0;
-  }
 `;
 
 export const PortfolioHeader = () => {
@@ -46,46 +30,7 @@ export const PortfolioHeader = () => {
           justifyContent="space-between"
           sx={{ minWidth: '200px', zIndex: 9, marginRight: '29.51px' }}
         >
-          <StyledLink
-            href="https://github.com/molague2021"
-            target="_blank"
-            rel="noopener"
-          >
-            <Icon>
-              <GitHubIcon />
-            </Icon>
-          </StyledLink>
-          <Link>
-            <StyledIcon>
-              <img
-                src={icon_frontend_mentor}
-                style={{
-                  width: '25px',
-                  height: '22px',
-                  flexShrink: 0,
-                  fill: 'var(--white, #FFF)',
-                }}
-              />
-            </StyledIcon>
-          </Link>
-          <Link
-            href="https://www.linkedin.com/in/martin-olague-4a0890203/"
-            target="_blank"
-            rel="noopener"
-          >
-            <StyledIcon>
-              <LinkedInIcon />
-            </StyledIcon>
-          </Link>
-          <Link
-            href="https://twitter.com/molague23"
-            target="_blank"
-            rel="noopener"
-          >
-            <StyledIcon>
-              <TwitterIcon />
-            </StyledIcon>
-          </Link>
+          <SocialMedia />
         </Grid>
       </Grid>
     </Grid>
