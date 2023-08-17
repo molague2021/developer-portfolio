@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Grid, Stack, Typography, styled, Button } from '@mui/material';
-
+import { Card } from '../../components/Card';
 import { portfolioProjects } from '../../constants/portfolioProjects';
 
 const StyleProjectsHeading = styled(Typography)`
@@ -83,7 +83,7 @@ const StyledButton = styled(Button)`
 `;
 
 export const PortfolioProjects = () => {
-  const [displayMenu, setDisplayMenu] = useState(false);
+  const [displayMenu, setDisplayMenu] = useState(-1);
   const handleHover = (e) => {
     console.log(e);
   };
@@ -129,31 +129,15 @@ export const PortfolioProjects = () => {
         {portfolioProjects.map((project, index) => {
           console.log(project);
           return (
-            <Stack
-              key={`project-${project.projectName}-key`}
-              display="flex"
-              justifyContent="space-between"
-              sx={{ width: '540px', height: '487px' }}
-            >
-              <Grid
-                id={`${index}`}
-                key={`project-${project.projectName}-unhover`}
-                sx={{ height: '400px' }}
-                onMouseEnter={() => {
-                  setDisplayMenu(true);
-                }}
-                onMouseLeave={() => {
-                  setDisplayMenu(false);
-                }}
-              >
+            <Card index={index}>
+              <Grid sx={{ height: '400px' }}>
                 <img
                   src={project.projectImage}
                   style={{ width: '540px', height: '400px', flexShrink: '0' }}
                 />
               </Grid>
-              {true && (
+              {displayMenu && (
                 <Grid
-                  key={`project-${project.projectName}-hover`}
                   container
                   flexDirection="column"
                   alignItems="center"
@@ -168,24 +152,17 @@ export const PortfolioProjects = () => {
                   }}
                 >
                   <Grid
-                    key={`project-${project.projectName}`}
                     display="flex"
                     flexDirection="column"
                     justifyContent="space-between"
                     sx={{ width: '138px', height: '124px' }}
                   >
-                    <Grid
-                      item
-                      key={`project-${project.projectName}-viewproject`}
-                      display="flex"
-                      flexDirection="column"
-                    >
+                    <Grid item display="flex" flexDirection="column">
                       <StyledButton>VIEW PROJECT</StyledButton>
                       <StyledProjectButtonUnderline sx={{ width: '138px' }} />
                     </Grid>
                     <Grid
                       item
-                      key={`project-${project.projectName}-viewcode`}
                       display="flex"
                       flexDirection="column"
                       alignItems="center"
@@ -196,23 +173,15 @@ export const PortfolioProjects = () => {
                   </Grid>
                 </Grid>
               )}
-              <Stack
-                key={`project-${project.projectName}-name`}
-                display="flex"
-                sx={{ width: '100%' }}
-              >
+              <Stack display="flex" sx={{ width: '100%' }}>
                 <StyledProjectName>{project.projectName}</StyledProjectName>
-                <Grid
-                  key={`project-${project.projectName}-skills`}
-                  display="flex"
-                  sx={{ marginTop: '7px' }}
-                >
+                <Grid display="flex" sx={{ marginTop: '7px' }}>
                   {project?.projectSkills.map((skill) => {
                     return <StyledProjectSkills>{skill}</StyledProjectSkills>;
                   })}
                 </Grid>
               </Stack>
-            </Stack>
+            </Card>
           );
         })}
       </Grid>
