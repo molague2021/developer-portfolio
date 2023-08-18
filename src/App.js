@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Grid, Stack } from '@mui/material';
 
 import { PortfolioHeader } from './containers/PortfolioHeader/PortfolioHeader';
@@ -10,6 +10,24 @@ import image_profile_desktop from './assets/image_profile_desktop.png';
 import pattern_circle from './assets/pattern_circle.svg';
 
 export const App = () => {
+  const portfolioFooterEnd = useRef(null);
+
+  const scrollToBottom = () => {
+    setTimeout(() => {
+      if (portfolioFooterEnd.current?.scrollIntoView) {
+        portfolioFooterEnd.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'end',
+          inline: 'nearest',
+        });
+      }
+    }, 300);
+  };
+
+  const handleContactMeOnClick = () => {
+    scrollToBottom();
+  };
+
   return (
     <>
       <Grid
@@ -51,11 +69,11 @@ export const App = () => {
             style={{ width: '129px', height: '129px', flexShrink: '0' }}
           />
         </Stack>
-        <PortfolioAboutMe />
+        <PortfolioAboutMe onContactMeOnClick={handleContactMeOnClick} />
         <PortfolioExperience />
-        <PortfolioProjects />
+        <PortfolioProjects onContactMeOnClick={handleContactMeOnClick} />
       </Grid>
-      <PortfolioFooter />
+      <PortfolioFooter portfolioFooterEnd={portfolioFooterEnd} />
     </>
   );
 };

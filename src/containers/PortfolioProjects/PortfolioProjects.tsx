@@ -82,10 +82,13 @@ const StyledButton = styled(Button)`
   }
 `;
 
-export const PortfolioProjects = () => {
-  const handleHover = (e) => {
-    console.log(e);
-  };
+interface PortfolioProjectsProps {
+  onContactMeOnClick: () => void;
+}
+
+export const PortfolioProjects = ({
+  onContactMeOnClick,
+}: PortfolioProjectsProps) => {
   return (
     <Grid
       container
@@ -113,7 +116,7 @@ export const PortfolioProjects = () => {
               gap: '10px',
             }}
           >
-            <StyledButton>CONTACT ME</StyledButton>
+            <StyledButton onClick={onContactMeOnClick}>CONTACT ME</StyledButton>
             <StyledButtonUnderline />
           </Stack>
         </Grid>

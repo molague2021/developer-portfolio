@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import { Stack, Grid } from '@mui/material';
 
 import { ContactMeSection } from './ContactMeSection';
 import { FooterAboutMeSection } from './FooterAboutMeSection';
 
-export const PortfolioFooter = () => {
+interface PortfolioFooterProps {
+  portfolioFooterEnd: RefObject<HTMLDivElement> | null | undefined;
+}
+
+export const PortfolioFooter = ({
+  portfolioFooterEnd,
+}: PortfolioFooterProps) => {
   return (
     <div style={{ height: '675px', flexShrink: 0, background: '#242424' }}>
       <Grid
+        ref={portfolioFooterEnd}
         container
         flexDirection="column"
         sx={{

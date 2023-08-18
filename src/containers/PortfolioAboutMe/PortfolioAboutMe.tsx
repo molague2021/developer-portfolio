@@ -78,7 +78,13 @@ const StyledButtonUnderline = styled('div')`
   background: var(--green, #4ee1a0);
 `;
 
-export const PortfolioAboutMe = () => {
+interface PortfolioAboutMeProps {
+  onContactMeOnClick: () => void;
+}
+
+export const PortfolioAboutMe = ({
+  onContactMeOnClick,
+}: PortfolioAboutMeProps) => {
   return (
     <Grid sx={{ height: '688px', position: 'relative' }}>
       <Grid
@@ -132,7 +138,7 @@ export const PortfolioAboutMe = () => {
             gap: '10px',
           }}
         >
-          <StyledButton>CONTACT ME</StyledButton>
+          <StyledButton onClick={onContactMeOnClick}>CONTACT ME</StyledButton>
           <StyledButtonUnderline />
         </Stack>
       </Grid>
