@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Grid, Stack, Typography, styled, Button } from '@mui/material';
-import { Card } from '../../components/Card';
+import { PortfolioProjectCard } from '../../components/PortfolioProjectCard';
 import { portfolioProjects } from '../../constants/portfolioProjects';
 
 const StyleProjectsHeading = styled(Typography)`
@@ -83,7 +83,6 @@ const StyledButton = styled(Button)`
 `;
 
 export const PortfolioProjects = () => {
-  const [displayMenu, setDisplayMenu] = useState(-1);
   const handleHover = (e) => {
     console.log(e);
   };
@@ -128,61 +127,7 @@ export const PortfolioProjects = () => {
       >
         {portfolioProjects.map((project, index) => {
           console.log(project);
-          return (
-            <Card index={index}>
-              <Grid sx={{ height: '400px' }}>
-                <img
-                  src={project.projectImage}
-                  style={{ width: '540px', height: '400px', flexShrink: '0' }}
-                />
-              </Grid>
-              {displayMenu && (
-                <Grid
-                  container
-                  flexDirection="column"
-                  alignItems="center"
-                  justifyContent="center"
-                  sx={{
-                    width: '540px',
-                    height: '400px',
-                    flexShrink: '0',
-                    background: 'black',
-                    opacity: '0.75',
-                    position: 'absolute',
-                  }}
-                >
-                  <Grid
-                    display="flex"
-                    flexDirection="column"
-                    justifyContent="space-between"
-                    sx={{ width: '138px', height: '124px' }}
-                  >
-                    <Grid item display="flex" flexDirection="column">
-                      <StyledButton>VIEW PROJECT</StyledButton>
-                      <StyledProjectButtonUnderline sx={{ width: '138px' }} />
-                    </Grid>
-                    <Grid
-                      item
-                      display="flex"
-                      flexDirection="column"
-                      alignItems="center"
-                    >
-                      <StyledButton>VIEW CODE</StyledButton>
-                      <StyledProjectButtonUnderline sx={{ width: '103px' }} />
-                    </Grid>
-                  </Grid>
-                </Grid>
-              )}
-              <Stack display="flex" sx={{ width: '100%' }}>
-                <StyledProjectName>{project.projectName}</StyledProjectName>
-                <Grid display="flex" sx={{ marginTop: '7px' }}>
-                  {project?.projectSkills.map((skill) => {
-                    return <StyledProjectSkills>{skill}</StyledProjectSkills>;
-                  })}
-                </Grid>
-              </Stack>
-            </Card>
-          );
+          return <PortfolioProjectCard index={index} project={project} />;
         })}
       </Grid>
     </Grid>
