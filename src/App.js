@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
+import { getListRecords } from './services/AirtableServices';
 import { Grid, Stack } from '@mui/material';
 
 import { PortfolioHeader } from './containers/PortfolioHeader/PortfolioHeader';
@@ -11,6 +12,10 @@ import pattern_circle from './assets/pattern_circle.svg';
 
 export const App = () => {
   const portfolioFooterEnd = useRef(null);
+
+  useEffect(() => {
+    getListRecords();
+  }, []);
 
   const scrollToBottom = () => {
     setTimeout(() => {
