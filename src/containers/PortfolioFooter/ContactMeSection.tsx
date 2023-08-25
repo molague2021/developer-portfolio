@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import {
   Stack,
   Grid,
@@ -8,6 +8,8 @@ import {
   Button,
 } from '@mui/material';
 import pattent_rings from '../../assets/pattern_rings.svg';
+
+import { createRecord } from '../../services/AirtableServices';
 
 const StyledContactMe = styled(Typography)`
   &.MuiTypography-root {
@@ -134,6 +136,47 @@ const StyledButton = styled(Button)`
 const SUBTITLE = `I would love to hear about your project and how I could help. Please fill in the form, and I’ll get back to you as soon as possible.`;
 
 export const ContactMeSection = () => {
+  const [name, setName] = useState<string>();
+  const [email, setEmail] = useState<string>();
+  const [message, setMessage] = useState<string>();
+
+  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
+  };
+
+  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handleMessageChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setMessage(e.target.value);
+  };
+
+  const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const record = {
+      records: [
+        {
+          fields: {
+            Name: name,
+            Email: email,
+            Message: message,
+          },
+        },
+      ],
+    };
+
+    await createRecord(record)
+      .then((response) => {
+        if (response.status === 200) {
+          setName('');
+          setEmail('');
+          setMessage('');
+        }
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <Grid
       sx={{
@@ -169,57 +212,72 @@ export const ContactMeSection = () => {
           <StyledTitle>Contact</StyledTitle>
           <StyledSubtitle>{SUBTITLE}</StyledSubtitle>
         </Stack>
-        <Stack
-          display="flex"
-          alignItems="flex-start"
-          gap="32px"
-          sx={{ width: '445px', height: '327px' }}
-        >
-          <Stack>
-            <StyledTextField
-              color="primary"
-              id="name-textfield"
-              placeholder="NAME"
-              variant="standard"
-            />
-          </Stack>
-          <Stack>
-            <StyledTextField
-              id="email-textfield"
-              placeholder="EMAIL"
-              variant="standard"
-            />
-          </Stack>
-          <Stack>
-            <StyledMultiLineTextField
-              id="message-textfield"
-              multiline
-              rows={4}
-              placeholder="MESSAGE"
-              variant="standard"
-            />
-          </Stack>
-          <Grid
-            item
-            sx={{ display: 'flex', width: '100%', justifyContent: 'flex-end' }}
+        <form onSubmit={handleOnSubmit}>
+          <Stack
+            display="flex"
+            alignItems="flex-start"
+            gap="32px"
+            sx={{ width: '445px', height: '327px' }}
           >
-            <Stack
-              display="flex"
-              flexDirection="column"
-              justifyContent="center"
-              alignItems="flex-end"
+            <Stack>
+              <StyledTextField
+                color="primary"
+                id="name-textfield"
+                placeholder="NAME"
+                value={name}
+                onChange={handleNameChange}
+                variant="standard"
+              />
+            </Stack>
+            <Stack>
+              <StyledTextField
+                id="email-textfield"
+                placeholder="EMAIL"
+                variant="standard"
+                value={email}
+                onChange={handleEmailChange}
+              />
+            </Stack>
+            <Stack>
+              <StyledMultiLineTextField
+                id="message-textfield"
+                multiline
+                rows={4}
+                placeholder="MESSAGE"
+                variant="standard"
+                value={message}
+                onChange={handleMessageChange}
+              />
+            </Stack>
+            <Grid
+              item
               sx={{
-                width: '144px',
-                gap: '10px',
+                display: 'flex',
+                width: '100%',
+                justifyContent: 'flex-end',
               }}
             >
-              <StyledButton sx={{ padding: '0', color: 'white' }}>
-                SEND MESSAGE
-              </StyledButton>
-              <StyledButtonUnderline />
-            </Stack>
-          </Grid>
-        </Stack>
+              <Stack
+                display="flex"
+                flexDirection="column"
+                justifyContent="center"
+                alignItems="flex-end"
+                sx={{
+                  width: '144px',
+                  gap: '10px',
+                }}
+              >
+                <StyledButton
+                  type="submit"
+                  sx={{ padding: '0', color: 'white' }}
+                >
+                  SEND MESSAGE
+                </StyledButton>
+                <StyledButtonUnderline />
+              </Stack>
+            </Grid>
+          </Stack>
+        </form>
       </Grid>
     </Grid>
   );

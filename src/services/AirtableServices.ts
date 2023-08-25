@@ -9,13 +9,12 @@ const airTable = axios.create({
 
 export const getListRecords = async () => {
   const response = await airTable.get(`/appg6SCyTinYnDivA/tblKIXyCMudyEQXml`);
-  console.log(response);
 };
 
 export const createRecord = async (recordData = {}) => {
   const config = {
     headers: {
-      Authorization: `Bearer patpiQoinPhLy9rPX.fbed4f59349e9823715b392aa6a92b44d79629a7444c40022aa034267f61a1c7`,
+      Authorization: `Bearer ${process.env.REACT_APP_PERSONAL_TOKEN}`,
       'Content-Type': 'application/json',
     },
   };
@@ -25,5 +24,5 @@ export const createRecord = async (recordData = {}) => {
     config
   );
 
-  return response.data;
+  return response;
 };
