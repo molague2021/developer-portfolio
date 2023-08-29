@@ -7,6 +7,7 @@ import {
   styled,
   TextField,
   Button,
+  SvgIcon,
 } from '@mui/material';
 import pattent_rings from '../../assets/pattern_rings.svg';
 
@@ -75,6 +76,12 @@ const StyledTextField = styled(TextField)`
     line-height: 26px; /* 162.5% */
     letter-spacing: -0.222px;
   }
+  .MuiInput-root.Mui-error:before {
+    border-bottom-color: #ff6f5b;
+  }
+  .MuiInput-root.Mui-error:after {
+    border-bottom-color: #ff6f5b;
+  }
   .MuiInput-root:before {
     border-bottom: 1px solid white;
   }
@@ -87,6 +94,18 @@ const StyledTextField = styled(TextField)`
   .MuiInput-root:hover:after {
     border-bottom: none;
     transition: none;
+  }
+  .Mui-error:not(MuiInput-root:hover) {
+    border-bottom: #ff6f5b;
+  }
+  .MuiFormHelperText-root.Mui-error {
+    color: #ff6f5b;
+    font-family: Space Grotesk;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px; /* 133.333% */
+    letter-spacing: -0.167px;
   }
 `;
 
@@ -105,6 +124,12 @@ const StyledMultiLineTextField = styled(TextField)`
     line-height: 26px; /* 162.5% */
     letter-spacing: -0.222px;
   }
+  .MuiInput-root.Mui-error:before {
+    border-bottom-color: #ff6f5b;
+  }
+  .MuiInput-root.Mui-error:after {
+    border-bottom-color: #ff6f5b;
+  }
   .MuiInput-root:before {
     border-bottom: 1px solid white;
     height: 0;
@@ -112,12 +137,24 @@ const StyledMultiLineTextField = styled(TextField)`
   .MuiInput-root:after {
     border-bottom: 1px solid #4ee1a0;
   }
-  .MuiInput-root:hover {
+  .MuiInput-root:hover:not(Mui-error) {
     border-bottom: 1px solid #4ee1a0;
   }
   .MuiInput-root:hover:after {
     border-bottom: none;
     transition: none;
+  }
+  .Mui-error:not(MuiInput-root:hover) {
+    border-bottom: #ff6f5b;
+  }
+  .MuiFormHelperText-root.Mui-error {
+    color: #ff6f5b;
+    font-family: Space Grotesk;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px; /* 133.333% */
+    letter-spacing: -0.167px;
   }
 `;
 
@@ -164,7 +201,6 @@ export const ContactMeSection = () => {
     formState: { errors },
   } = useForm<Inputs>();
 
-  console.log(watch(), errors);
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
@@ -177,8 +213,8 @@ export const ContactMeSection = () => {
     setMessage(e.target.value);
   };
 
-  const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleOnSubmit = async (data: Inputs) => {
+    const { name, email, message } = data;
 
     const record = {
       records: [
@@ -239,7 +275,7 @@ export const ContactMeSection = () => {
         </Stack>
         <form
           onSubmit={handleSubmit((data) => {
-            console.log(data);
+            handleOnSubmit(data);
           })}
         >
           <Stack
@@ -253,7 +289,39 @@ export const ContactMeSection = () => {
                 {...register('name', { required: true })}
                 color="primary"
                 error={errors?.name?.type === 'required'}
-                helperText="Field is required"
+                helperText={errorMessageCreator(errors?.name?.type)}
+                FormHelperTextProps={{ sx: { textAlign: 'right' } }}
+                InputProps={{
+                  endAdornment: errors?.name?.type === 'required' && (
+                    <SvgIcon>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <circle cx="12" cy="12" r="11.5" stroke="#FF6F5B" />
+                        <rect
+                          x="11"
+                          y="6"
+                          width="2"
+                          height="9"
+                          rx="1"
+                          fill="#FF6F5B"
+                        />
+                        <rect
+                          x="11"
+                          y="17"
+                          width="2"
+                          height="2"
+                          rx="1"
+                          fill="#FF6F5B"
+                        />
+                      </svg>
+                    </SvgIcon>
+                  ),
+                }}
                 id="name"
                 placeholder="NAME"
                 value={name}
@@ -272,7 +340,39 @@ export const ContactMeSection = () => {
                   errors?.email?.type === 'required' ||
                   errors?.email?.type === 'pattern'
                 }
+                InputProps={{
+                  endAdornment: errors?.email && (
+                    <SvgIcon>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <circle cx="12" cy="12" r="11.5" stroke="#FF6F5B" />
+                        <rect
+                          x="11"
+                          y="6"
+                          width="2"
+                          height="9"
+                          rx="1"
+                          fill="#FF6F5B"
+                        />
+                        <rect
+                          x="11"
+                          y="17"
+                          width="2"
+                          height="2"
+                          rx="1"
+                          fill="#FF6F5B"
+                        />
+                      </svg>
+                    </SvgIcon>
+                  ),
+                }}
                 helperText={errorMessageCreator(errors?.email?.type)}
+                FormHelperTextProps={{ sx: { textAlign: 'right' } }}
                 placeholder="EMAIL"
                 variant="standard"
                 value={email}
@@ -284,7 +384,39 @@ export const ContactMeSection = () => {
                 {...register('message', { required: true })}
                 id="message"
                 error={errors?.message?.type === 'required'}
-                helperText="Field is required"
+                helperText={errorMessageCreator(errors?.message?.type)}
+                FormHelperTextProps={{ sx: { textAlign: 'right' } }}
+                InputProps={{
+                  endAdornment: errors?.message?.type === 'required' && (
+                    <SvgIcon>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <circle cx="12" cy="12" r="11.5" stroke="#FF6F5B" />
+                        <rect
+                          x="11"
+                          y="6"
+                          width="2"
+                          height="9"
+                          rx="1"
+                          fill="#FF6F5B"
+                        />
+                        <rect
+                          x="11"
+                          y="17"
+                          width="2"
+                          height="2"
+                          rx="1"
+                          fill="#FF6F5B"
+                        />
+                      </svg>
+                    </SvgIcon>
+                  ),
+                }}
                 multiline
                 rows={4}
                 placeholder="MESSAGE"
