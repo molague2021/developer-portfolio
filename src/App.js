@@ -9,6 +9,7 @@ import { PortfolioProjects } from './containers/PortfolioProjects/PortfolioProje
 import { PortfolioFooter } from './containers/PortfolioFooter/PortfolioFooter';
 import image_profile_desktop from './assets/image_profile_desktop.png';
 import pattern_circle from './assets/pattern_circle.svg';
+import './index.css';
 
 export const App = () => {
   const portfolioFooterEnd = useRef(null);
