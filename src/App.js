@@ -40,10 +40,11 @@ export const App = () => {
         container
         flexDirection="column"
         sx={{
-          maxWidth: '1150px',
+          maxWidth: '1440px',
           margin: '0 auto',
-          padding: '39px 28px',
+          padding: '39px 165px',
           textAlign: 'center',
+          overflow: 'hidden',
         }}
       >
         <PortfolioHeader />
