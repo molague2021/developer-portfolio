@@ -4,12 +4,49 @@ import { Grid, styled, Stack, Typography } from '@mui/material';
 import { portfolioExperienceList } from '../../constants/portfolioExperience';
 import pattent_rings from '../../assets/pattern_rings.svg';
 
-const StyledDivider = styled('div')`
-  width: 1110px;
-  height: 1px;
-  flex-shrink: 0;
-  background: white;
-`;
+const StyledDivider = styled('div')(({ theme }) => ({
+  [theme.breakpoints.between('sm', 'md')]: {
+    width: '706px',
+    height: '1px',
+    flexShrink: '0',
+    background: 'white',
+  },
+  [theme.breakpoints.up('md')]: {
+    width: '1110px',
+    height: '1px',
+    flexShrink: '0',
+    background: 'white',
+  },
+}));
+
+const StyledContainer = styled(Grid)(({ theme }) => ({
+  width: 'auto',
+  [theme.breakpoints.between('sm', 'md')]: {
+    maxWidth: '708px',
+    height: '451px',
+    position: 'relative',
+  },
+  [theme.breakpoints.up('md')]: {
+    maxWidth: '1110px',
+    height: '327px',
+    position: 'relative',
+  },
+}));
+
+const StyledGrid = styled(Grid)(({ theme }) => ({
+  width: '530px',
+  height: '129px',
+  flexShrink: '0',
+  position: 'absolute',
+  [theme.breakpoints.between('sm', 'md')]: {
+    marginTop: '386px',
+    marginLeft: '540px',
+  },
+  [theme.breakpoints.up('md')]: {
+    marginTop: '252px',
+    right: '-415px',
+  },
+}));
 
 const StyledHeading = styled(Typography)`
   color: white;
@@ -38,18 +75,16 @@ const StyledBody = styled(Typography)`
 
 export const PortfolioExperience = () => {
   return (
-    <Grid
-      container
-      alignContent="space-between"
-      sx={{ height: '327px', position: 'relative' }}
-    >
+    <StyledContainer container>
       <StyledDivider />
       <Grid
         display="flex"
         flexWrap="wrap"
-        justifyContent="space-between"
-        alignContent="space-between"
-        sx={{ maxWidth: '1110px', height: '254px' }}
+        alignItems="flex-end"
+        gap="7px"
+        sx={{
+          maxWidth: '1110px',
+        }}
       >
         {portfolioExperienceList.map((experience) => {
           return (
@@ -68,21 +103,12 @@ export const PortfolioExperience = () => {
           );
         })}
       </Grid>
-      <Grid
-        sx={{
-          width: '530px',
-          height: '129px',
-          flexShrink: '0',
-          position: 'absolute',
-          marginTop: '252px',
-          right: '-415px',
-        }}
-      >
+      <StyledGrid sx={{}}>
         <img
           src={pattent_rings}
           style={{ width: '530px', height: '129px', flexShrink: '0' }}
         />
-      </Grid>
-    </Grid>
+      </StyledGrid>
+    </StyledContainer>
   );
 };

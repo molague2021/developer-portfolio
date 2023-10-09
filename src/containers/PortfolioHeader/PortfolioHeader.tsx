@@ -12,9 +12,17 @@ const StyledTypography = styled(Typography)`
   letter-spacing: -0.444px;
 `;
 
+const StyledSocialMediaGrid = styled(Grid)(({ theme }) => ({
+  minWidth: '200px',
+  zIndex: 9,
+  [theme.breakpoints.up('md')]: {
+    marginRight: '29.51px',
+  },
+}));
+
 export const PortfolioHeader = () => {
   return (
-    <Grid item>
+    <Grid item sx={{ width: '100%' }}>
       <Grid
         item
         display="flex"
@@ -24,14 +32,14 @@ export const PortfolioHeader = () => {
         <StyledTypography fontFamily="Space Grotesk">
           adamkeyes
         </StyledTypography>
-        <Grid
+        <StyledSocialMediaGrid
           item
           display="flex"
           justifyContent="space-between"
-          sx={{ minWidth: '200px', zIndex: 9, marginRight: '29.51px' }}
+          sx={{}}
         >
           <SocialMedia />
-        </Grid>
+        </StyledSocialMediaGrid>
       </Grid>
     </Grid>
   );

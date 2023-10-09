@@ -1,15 +1,46 @@
 import React, { useRef, useEffect } from 'react';
 import { getListRecords } from './services/AirtableServices';
-import { Grid, Stack } from '@mui/material';
+import { Grid, Stack, styled, useTheme, useMediaQuery } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { PortfolioHeader } from './containers/PortfolioHeader/PortfolioHeader';
 import { PortfolioAboutMe } from './containers/PortfolioAboutMe/PortfolioAboutMe';
 import { PortfolioExperience } from './containers/PortfolioExperience/PortfolioExperience';
 import { PortfolioProjects } from './containers/PortfolioProjects/PortfolioProjects';
 import { PortfolioFooter } from './containers/PortfolioFooter/PortfolioFooter';
+import { PortfolioProfileImage } from './components/PortfolioProfileImage';
 import image_profile_desktop from './assets/image_profile_desktop.png';
+import image_profile_tablet from './assets/image-profile-tablet.webp';
 import pattern_circle from './assets/pattern_circle.svg';
 import './index.css';
+
+const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 375,
+      md: 769,
+      xl: 1440,
+    },
+  },
+});
+
+const StyledGrid = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('sm', 'md')]: {
+    maxWidth: '1440px',
+    margin: '0 auto',
+    padding: '29px 30px',
+    textAlign: 'center',
+    overflow: 'hidden',
+  },
+  [theme.breakpoints.between('md', 'xl')]: {
+    maxWidth: '1440px',
+    margin: '0 auto',
+    padding: '39px 165px',
+    textAlign: 'center',
+    overflow: 'hidden',
+  },
+}));
 
 export const App = () => {
   const portfolioFooterEnd = useRef(null);
@@ -35,8 +66,8 @@ export const App = () => {
   };
 
   return (
-    <>
-      <Grid
+    <ThemeProvider theme={theme}>
+      <StyledGrid
         container
         flexDirection="column"
         sx={{
@@ -48,39 +79,13 @@ export const App = () => {
         }}
       >
         <PortfolioHeader />
-        <Grid
-          sx={{
-            position: 'absolute',
-            marginLeft: '665px',
-            top: '0',
-          }}
-        >
-          <img
-            src={image_profile_desktop}
-            style={{ width: '444.876px', height: '720px', flexShrink: '0' }}
-          />
-        </Grid>
-        <Stack
-          sx={{
-            width: '129px',
-            height: '129px',
-            marginLeft: '484px',
-            zIndex: '2',
-            position: 'absolute',
-            top: '521px',
-            marginLeft: '601px',
-          }}
-        >
-          <img
-            src={pattern_circle}
-            style={{ width: '129px', height: '129px', flexShrink: '0' }}
-          />
-        </Stack>
+        <PortfolioProfileImage />
+
         <PortfolioAboutMe onContactMeOnClick={handleContactMeOnClick} />
         <PortfolioExperience />
         <PortfolioProjects onContactMeOnClick={handleContactMeOnClick} />
-      </Grid>
+      </StyledGrid>
       <PortfolioFooter portfolioFooterEnd={portfolioFooterEnd} />
-    </>
+    </ThemeProvider>
   );
 };

@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { Grid, Stack, Typography, styled, Button } from '@mui/material';
+import {
+  Grid,
+  Stack,
+  Typography,
+  styled,
+  Button,
+  useTheme,
+  useMediaQuery,
+} from '@mui/material';
 
 type Project = {
   id: number;
@@ -63,39 +71,80 @@ const StyledButtonUnderline = styled('div')`
   background: var(--green, #4ee1a0);
 `;
 
-const StyledButton = styled(Button)`
-  &.MuiButton-root {
-    color: white;
-    font-family: Space Grotesk;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 26px; /* 162.5% */
-    letter-spacing: 2.286px;
-    text-wrap: nowrap;
-  }
-  &.MuiButton-root:hover {
-    color: #4ee1a0;
-  }
-`;
+const StyledButton = styled(Button)(({ theme }) => ({
+  [`&.MuiButton-root`]: {
+    color: 'white',
+    fontFamily: 'Space Grotesk',
+    fontSize: '16px',
+    fontStyle: 'normal',
+    fontWeight: '700',
+    lineHeight: '26px' /* 162.5% */,
+    letterSpacing: '2.286px',
+    textWrap: 'nowrap',
+  },
+  [`&.MuiButton-root:hover`]: {
+    color: '#4ee1a0',
+  },
+  [theme.breakpoints.between('sm', 'md')]: {
+    width: '136px',
+    padding: 0,
+    height: '26px',
+    flexShrink: '0',
+  },
+}));
+
+const StyledStack = styled(Stack)(({ theme }) => ({
+  [theme.breakpoints.between('sm', 'md')]: {
+    width: '342px',
+    height: '398px',
+    flexShrink: '0',
+  },
+  [theme.breakpoints.up('md')]: {
+    width: '540px',
+    height: '487px',
+  },
+}));
+
+const StyledImgGrid = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('sm', 'md')]: {
+    height: '253px',
+  },
+  [theme.breakpoints.up('md')]: {
+    height: '400px',
+  },
+}));
+
+const StyledImg = styled('img')(({ theme }) => ({
+  [theme.breakpoints.between('sm', 'md')]: {
+    width: '346px',
+    height: '253px',
+    flexShrink: '0',
+  },
+  [theme.breakpoints.up('md')]: {
+    width: '540px',
+    height: '400px',
+    flexShrink: '0',
+  },
+}));
 
 export const PortfolioProjectCard = ({ index, project }: CardProps) => {
   const [displayMenu, setDisplayMenu] = useState(false);
 
+  const theme = useTheme();
+  console.log({ theme });
+  const desktopSizeView = useMediaQuery(theme.breakpoints.up('md'));
+  console.log({ desktopSizeView });
+
   return (
-    <Stack
+    <StyledStack
       key={index}
       display="flex"
       justifyContent="space-between"
-      onMouseEnter={() => setDisplayMenu(true)}
-      onMouseLeave={() => setDisplayMenu(false)}
-      sx={{ width: '540px', height: '487px' }}
+      onMouseEnter={() => desktopSizeView && setDisplayMenu(true)}
+      onMouseLeave={() => desktopSizeView && setDisplayMenu(false)}
     >
-      <Grid sx={{ height: '400px' }}>
-        <img
-          src={project.projectImage}
-          style={{ width: '540px', height: '400px', flexShrink: '0' }}
-        />
+      <Grid sx={{}}>
+        <StyledImg src={project.projectImage} />
       </Grid>
       {displayMenu && (
         <Grid
@@ -142,6 +191,29 @@ export const PortfolioProjectCard = ({ index, project }: CardProps) => {
           })}
         </Grid>
       </Stack>
-    </Stack>
+      {!desktopSizeView && (
+        <Grid
+          display="flex"
+          flexDirection="row"
+          justifyContent="space-between"
+          sx={{ width: '271px', height: '38px' }}
+        >
+          <Grid item display="flex" flexDirection="column" gap="10px">
+            <StyledButton>VIEW PROJECT</StyledButton>
+            <StyledProjectButtonUnderline sx={{ width: '138px' }} />
+          </Grid>
+          <Grid
+            item
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            gap="10px"
+          >
+            <StyledButton>VIEW CODE</StyledButton>
+            <StyledProjectButtonUnderline sx={{ width: '103px' }} />
+          </Grid>
+        </Grid>
+      )}
+    </StyledStack>
   );
 };
