@@ -22,25 +22,16 @@ const StyledSocialMediaGrid = styled(Grid)(({ theme }) => ({
 
 export const PortfolioHeader = () => {
   return (
-    <Grid item sx={{ width: '100%' }}>
-      <Grid
-        item
-        display="flex"
-        alignItems="center"
-        justifyContent="space-between"
-      >
-        <StyledTypography fontFamily="Space Grotesk">
-          adamkeyes
-        </StyledTypography>
-        <StyledSocialMediaGrid
-          item
-          display="flex"
-          justifyContent="space-between"
-          sx={{}}
-        >
-          <SocialMedia />
-        </StyledSocialMediaGrid>
-      </Grid>
+    <Grid
+      item
+      display="flex"
+      alignItems="center"
+      justifyContent="space-between"
+    >
+      <StyledTypography fontFamily="Space Grotesk">adamkeyes</StyledTypography>
+      <StyledSocialMediaGrid item display="flex" justifyContent="space-between">
+        <SocialMedia />
+      </StyledSocialMediaGrid>
     </Grid>
   );
 };

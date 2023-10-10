@@ -14,51 +14,22 @@ import pattent_rings from '../../assets/pattern_rings.svg';
 import { createRecord } from '../../services/AirtableServices';
 import { EMAIL_VALIDATION_REGEX } from '../../utils/regex';
 
-const StyledContactMe = styled(Typography)`
-  &.MuiTypography-root {
-    color: var(--white, #fff);
-    font-family: Space Grotesk;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 26px; /* 162.5% */
-    letter-spacing: 2.286px;
-  }
-`;
+// const StyledContactMe = styled(Typography)`
+//   &.MuiTypography-root {
+//     color: var(--white, #fff);
+//     font-family: Space Grotesk;
+//     font-size: 16px;
+//     font-style: normal;
+//     font-weight: 700;
+//     line-height: 26px; /* 162.5% */
+//     letter-spacing: 2.286px;
+//   }
+// `;
 
 const StyledButtonUnderline = styled('div')`
   width: 144px;
   height: 2px;
   background: var(--green, #4ee1a0);
-`;
-
-const StyledTitle = styled(Typography)`
-  color: white;
-  font-feature-settings: 'clig' off, 'liga' off;
-
-  /* Heading (XL) */
-  &.MuiTypography-root {
-    font-family: Space Grotesk;
-    font-size: 88px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 88px; /* 100% */
-    letter-spacing: -2.5px;
-  }
-`;
-
-const StyledSubtitle = styled(Typography)`
-  width: 445px;
-  color: white;
-  text-align: left;
-  font-feature-settings: 'clig' off, 'liga' off;
-
-  /* Body */
-  font-family: Space Grotesk;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 28px; /* 155.556% */
 `;
 
 const StyledTextField = styled(TextField)`
@@ -172,6 +143,113 @@ const StyledButton = styled(Button)`
     color: #4ee1a0;
   }
 `;
+
+const StyledTitle = styled(Typography)(({ theme }) => ({
+  color: 'white',
+  [theme.breakpoints.between('sm', 'md')]: {
+    fontFamily: 'Space Grotesk',
+    fontSize: '72px',
+    fontStyle: 'normal',
+    fontWeight: '700',
+    lineHeight: '72px' /* 100% */,
+    letterSpacing: '-2.045px',
+    textAlign: 'center',
+  },
+  [theme.breakpoints.up('xl')]: {
+    fontFeatureSettings: 'clig off, liga off',
+    fontFamily: 'Space Grotesk',
+    fontSize: '88px',
+    fontStyle: 'normal',
+    fontWeight: '700',
+    lineHeight: '88px' /* 100% */,
+    letterSpacing: '-2.5px',
+  },
+}));
+
+const StyledSubtitle = styled(Typography)(({ theme }) => ({
+  color: 'white',
+  fontFeatureSettings: 'clig off, liga off',
+  [theme.breakpoints.between('sm', 'md')]: {
+    fontFamily: 'Space Grotesk',
+    fontSize: '18px',
+    fontStyle: 'normal',
+    fontWeight: '500',
+    lineHeight: '28px',
+    textAlign: 'center',
+  },
+  [theme.breakpoints.up('xl')]: {
+    textAlign: 'left',
+    fontFamily: 'Space Grotesk',
+    fontSize: '18px',
+    fontStyle: 'normal',
+    fontWeight: '500',
+    lineHeight: '28px' /* 155.556% */,
+  },
+}));
+`
+  width: 445px;
+  color: white;
+  
+  
+
+  /* Body */
+  font-family: Space Grotesk;
+  font-size: ;
+  font-style: normal;
+  font-weight: ;
+  line-height: ; 
+`;
+
+const StyledContainer = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('sm', 'md')]: {
+    maxWidth: '768px',
+    padding: '60px 129px',
+    flexShrink: 0,
+    position: 'relative',
+  },
+  [theme.breakpoints.up('xl')]: {
+    width: 'auto',
+    height: '327px',
+    flexShrink: 0,
+    position: 'relative',
+  },
+}));
+
+const StyledGridItem = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('sm', 'md')]: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    width: '445px',
+    alignItems: 'center',
+    gap: '20px',
+  },
+  [theme.breakpoints.up('xl')]: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+}));
+
+const StyledContactStack = styled(Stack)(({ theme }) => ({
+  [theme.breakpoints.between('sm', 'md')]: {
+    width: '445px',
+    height: '176px',
+    gap: '20px',
+    alignItems: 'center',
+  },
+  [theme.breakpoints.up('xl')]: {
+    width: '445px',
+    height: '208px',
+    gap: '36px',
+  },
+}));
+
+const StyledForm = styled('form')(({ theme }) => ({
+  [theme.breakpoints.between('sm', 'md')]: {
+    marginTop: '48px',
+  },
+  [theme.breakpoints.up('xl')]: {},
+}));
+
 const SUBTITLE = `I would love to hear about your project and how I could help. Please fill in the form, and I’ll get back to you as soon as possible.`;
 
 type Inputs = {
@@ -239,15 +317,8 @@ export const ContactMeSection = () => {
       .catch((error) => console.log(error));
   };
   return (
-    <Grid
-      sx={{
-        width: '1110px',
-        height: '327px',
-        flexShrink: 0,
-        position: 'relative',
-      }}
-    >
-      <Grid item display="flex" justifyContent="space-between">
+    <StyledContainer>
+      <StyledGridItem item display="flex">
         <Grid
           sx={{
             width: '530px',
@@ -263,17 +334,15 @@ export const ContactMeSection = () => {
             style={{ width: '530px', height: '129px', flexShrink: '0' }}
           />
         </Grid>
-        <Stack
+        <StyledContactStack
           display="flex"
           justifyContent="center"
           alignItems="flex-start"
-          gap="36px"
-          sx={{ width: '445px', height: '208px' }}
         >
           <StyledTitle>Contact</StyledTitle>
           <StyledSubtitle>{SUBTITLE}</StyledSubtitle>
-        </Stack>
-        <form
+        </StyledContactStack>
+        <StyledForm
           onSubmit={handleSubmit((data) => {
             handleOnSubmit(data);
           })}
@@ -453,8 +522,8 @@ export const ContactMeSection = () => {
               </Stack>
             </Grid>
           </Stack>
-        </form>
-      </Grid>
-    </Grid>
+        </StyledForm>
+      </StyledGridItem>
+    </StyledContainer>
   );
 };

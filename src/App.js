@@ -33,7 +33,7 @@ const StyledGrid = styled(Grid)(({ theme }) => ({
     textAlign: 'center',
     overflow: 'hidden',
   },
-  [theme.breakpoints.between('md', 'xl')]: {
+  [theme.breakpoints.up('xl')]: {
     maxWidth: '1440px',
     margin: '0 auto',
     padding: '39px 165px',
@@ -67,17 +67,7 @@ export const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <StyledGrid
-        container
-        flexDirection="column"
-        sx={{
-          maxWidth: '1440px',
-          margin: '0 auto',
-          padding: '39px 165px',
-          textAlign: 'center',
-          overflow: 'hidden',
-        }}
-      >
+      <StyledGrid container flexDirection="column">
         <PortfolioHeader />
         <PortfolioProfileImage />
 

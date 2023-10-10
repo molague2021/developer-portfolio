@@ -8,7 +8,7 @@ const StyledImageGrid = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.between('sm', 'md')]: {
     position: 'absolute',
     marginLeft: '410px',
-    top: '0px',
+    top: '-60px',
   },
   [theme.breakpoints.up('md')]: {
     position: 'absolute',
@@ -36,8 +36,8 @@ const StyledStack = styled(Stack)(({ theme }) => ({
   zIndex: '2',
   position: 'absolute',
   [theme.breakpoints.between('sm', 'md')]: {
-    top: '480px',
-    marginLeft: '670px',
+    top: '418px',
+    marginLeft: '655px',
   },
   [theme.breakpoints.up('md')]: {
     top: '521px',
@@ -51,8 +51,8 @@ export const PortfolioProfileImage = () => {
   const tabletSizeView = useMediaQuery(theme.breakpoints.between('sm', 'md'));
   console.log({ tabletSizeView });
   return (
-    <>
-      <StyledImageGrid>
+    <Grid sx={{ position: 'relative' }}>
+      <StyledImageGrid container>
         <StyledImg
           src={tabletSizeView ? image_profile_tablet : image_profile_desktop}
         />
@@ -63,6 +63,6 @@ export const PortfolioProfileImage = () => {
           style={{ width: '129px', height: '129px', flexShrink: '0' }}
         />
       </StyledStack>
-    </>
+    </Grid>
   );
 };
