@@ -53,24 +53,6 @@ const StyledProjectSkills = styled(Typography)`
   line-height: 28px; /* 155.556% */
 `;
 
-const StyledContactMe = styled(Typography)`
-  &.MuiTypography-root {
-    color: var(--white, #fff);
-    font-family: Space Grotesk;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 26px; /* 162.5% */
-    letter-spacing: 2.286px;
-  }
-`;
-
-const StyledButtonUnderline = styled('div')`
-  width: 120px;
-  height: 2px;
-  background: var(--green, #4ee1a0);
-`;
-
 const StyledButton = styled(Button)(({ theme }) => ({
   [`&.MuiButton-root`]: {
     color: 'white',
@@ -99,7 +81,7 @@ const StyledStack = styled(Stack)(({ theme }) => ({
     height: '398px',
     flexShrink: '0',
   },
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
     width: '540px',
     height: '487px',
   },
@@ -109,7 +91,7 @@ const StyledImgGrid = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.between('sm', 'md')]: {
     height: '253px',
   },
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
     height: '400px',
   },
 }));
@@ -120,7 +102,7 @@ const StyledImg = styled('img')(({ theme }) => ({
     height: '253px',
     flexShrink: '0',
   },
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
     width: '540px',
     height: '400px',
     flexShrink: '0',

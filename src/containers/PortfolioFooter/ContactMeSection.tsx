@@ -14,18 +14,6 @@ import pattent_rings from '../../assets/pattern_rings.svg';
 import { createRecord } from '../../services/AirtableServices';
 import { EMAIL_VALIDATION_REGEX } from '../../utils/regex';
 
-// const StyledContactMe = styled(Typography)`
-//   &.MuiTypography-root {
-//     color: var(--white, #fff);
-//     font-family: Space Grotesk;
-//     font-size: 16px;
-//     font-style: normal;
-//     font-weight: 700;
-//     line-height: 26px; /* 162.5% */
-//     letter-spacing: 2.286px;
-//   }
-// `;
-
 const StyledButtonUnderline = styled('div')`
   width: 144px;
   height: 2px;
@@ -155,7 +143,7 @@ const StyledTitle = styled(Typography)(({ theme }) => ({
     letterSpacing: '-2.045px',
     textAlign: 'center',
   },
-  [theme.breakpoints.up('xl')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
     fontFeatureSettings: 'clig off, liga off',
     fontFamily: 'Space Grotesk',
     fontSize: '88px',
@@ -177,7 +165,7 @@ const StyledSubtitle = styled(Typography)(({ theme }) => ({
     lineHeight: '28px',
     textAlign: 'center',
   },
-  [theme.breakpoints.up('xl')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
     textAlign: 'left',
     fontFamily: 'Space Grotesk',
     fontSize: '18px',
@@ -186,19 +174,6 @@ const StyledSubtitle = styled(Typography)(({ theme }) => ({
     lineHeight: '28px' /* 155.556% */,
   },
 }));
-`
-  width: 445px;
-  color: white;
-  
-  
-
-  /* Body */
-  font-family: Space Grotesk;
-  font-size: ;
-  font-style: normal;
-  font-weight: ;
-  line-height: ; 
-`;
 
 const StyledContainer = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.between('sm', 'md')]: {
@@ -207,7 +182,7 @@ const StyledContainer = styled(Grid)(({ theme }) => ({
     flexShrink: 0,
     position: 'relative',
   },
-  [theme.breakpoints.up('xl')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
     width: 'auto',
     height: '327px',
     flexShrink: 0,
@@ -223,7 +198,7 @@ const StyledGridItem = styled(Grid)(({ theme }) => ({
     alignItems: 'center',
     gap: '20px',
   },
-  [theme.breakpoints.up('xl')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -236,7 +211,7 @@ const StyledContactStack = styled(Stack)(({ theme }) => ({
     gap: '20px',
     alignItems: 'center',
   },
-  [theme.breakpoints.up('xl')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
     width: '445px',
     height: '208px',
     gap: '36px',
@@ -247,7 +222,26 @@ const StyledForm = styled('form')(({ theme }) => ({
   [theme.breakpoints.between('sm', 'md')]: {
     marginTop: '48px',
   },
-  [theme.breakpoints.up('xl')]: {},
+  [theme.breakpoints.between('md', 'xl')]: {},
+}));
+
+const StyledRingImgGrid = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('sm', 'md')]: {
+    width: '530px',
+    height: '129px',
+    flexShrink: '0',
+    position: 'absolute',
+    marginTop: '547px',
+    left: '-401px',
+  },
+  [theme.breakpoints.between('md', 'xl')]: {
+    width: '530px',
+    height: '129px',
+    flexShrink: '0',
+    position: 'absolute',
+    marginTop: '243px',
+    left: '-265px',
+  },
 }));
 
 const SUBTITLE = `I would love to hear about your project and how I could help. Please fill in the form, and I’ll get back to you as soon as possible.`;
@@ -319,21 +313,12 @@ export const ContactMeSection = () => {
   return (
     <StyledContainer>
       <StyledGridItem item display="flex">
-        <Grid
-          sx={{
-            width: '530px',
-            height: '129px',
-            flexShrink: '0',
-            position: 'absolute',
-            marginTop: '243px',
-            left: -265,
-          }}
-        >
+        <StyledRingImgGrid>
           <img
             src={pattent_rings}
             style={{ width: '530px', height: '129px', flexShrink: '0' }}
           />
-        </Grid>
+        </StyledRingImgGrid>
         <StyledContactStack
           display="flex"
           justifyContent="center"

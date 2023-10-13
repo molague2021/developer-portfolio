@@ -1,30 +1,9 @@
 import React from 'react';
-import {
-  Grid,
-  styled,
-  Stack,
-  Typography,
-  Icon,
-  Link,
-  SvgIcon,
-} from '@mui/material';
+import { styled, Icon, Link, SvgIcon } from '@mui/material';
 
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
-
-const StyledTypography = styled(Typography)`
-  font-family: Space Grotesk;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 32px; /* 100% */
-  letter-spacing: -0.444px;
-`;
-
-const StyledIcon = styled(Icon)`
-  color: #ffffff;
-`;
 
 const StyledLink = styled(Link)`
   &.MuiLink-root {

@@ -8,7 +8,7 @@ const StyledContainer = styled(Grid)(({ theme }) => ({
     width: '768px',
     height: '63px',
   },
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
     position: 'relative',
     marginTop: '92px',
   },
@@ -18,9 +18,21 @@ const StyledItemGrid = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.between('sm', 'md')]: {
     gap: '344px',
   },
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
+    width: '1110px',
     position: 'relative',
-    marginTop: '92px',
+  },
+}));
+
+const StyledNameSocialMediaGrid = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('sm', 'md')]: {
+    gap: '344px',
+  },
+  [theme.breakpoints.between('md', 'xl')]: {
+    width: '1110px',
+    gap: '746px',
+    position: 'relative',
+    marginTop: '47px',
   },
 }));
 
@@ -31,7 +43,7 @@ const StyledDivider = styled('div')(({ theme }) => ({
     height: '1px',
     flexShrink: '0',
   },
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
     width: '1110px',
     height: '1px',
     flexShrink: '0',
@@ -58,11 +70,10 @@ export const FooterAboutMeSection = () => {
       >
         <StyledDivider />
       </StyledItemGrid>
-      <StyledItemGrid
+      <StyledNameSocialMediaGrid
         item
         display="inline-flex;"
         alignItems="center"
-        justifyContent="space-between"
       >
         <StyledTypography>adamkeyes</StyledTypography>
         <Grid
@@ -73,7 +84,7 @@ export const FooterAboutMeSection = () => {
         >
           <SocialMedia />
         </Grid>
-      </StyledItemGrid>
+      </StyledNameSocialMediaGrid>
     </StyledContainer>
   );
 };

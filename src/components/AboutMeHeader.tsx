@@ -1,15 +1,5 @@
 import React from 'react';
-import {
-  Stack,
-  Grid,
-  Typography,
-  styled,
-  Icon,
-  Link,
-  Divider,
-  Button,
-  useTheme,
-} from '@mui/material';
+import { Stack, Grid, Typography, styled, useTheme } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 const StyledHeading = styled(Typography)(({ theme }) => ({
   [theme.breakpoints.between('sm', 'md')]: {
@@ -21,7 +11,7 @@ const StyledHeading = styled(Typography)(({ theme }) => ({
     lineHeight: '72px' /* 100% */,
     letterSpacing: '-2.045px',
   },
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
     color: 'var(--white, #fff)',
     fontFeatureSettings: 'clig off, liga off',
     fontFamily: 'Space Grotesk',
@@ -39,7 +29,7 @@ const StyledUnderline = styled('div')(({ theme }) => ({
     height: '6px',
     background: 'var(--green, #4ee1a0)',
   },
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
     width: '492px',
     height: '6px',
     background: 'var(--green, #4ee1a0)',

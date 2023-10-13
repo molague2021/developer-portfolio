@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Grid, Stack, Typography, styled, Button } from '@mui/material';
 import { PortfolioProjectCard } from '../../components/PortfolioProjectCard';
 import { portfolioProjects } from '../../constants/portfolioProjects';
@@ -13,7 +13,7 @@ const StyleProjectsHeading = styled(Typography)(({ theme }) => ({
     lineHeight: '72px' /* 100% */,
     letterSpacing: '-2.045px',
   },
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
     color: 'var(--white, #fff)',
     fontFeatureSettings: 'clig off, liga off',
     fontFamily: 'Space Grotesk',
@@ -25,25 +25,12 @@ const StyleProjectsHeading = styled(Typography)(({ theme }) => ({
   },
 }));
 
-// `
-//   color: white;
-//   font-feature-settings: 'clig' off, 'liga' off;
-
-//   /* Heading (XL) */
-//   font-family: Space Grotesk;
-//   font-size: 88px;
-//   font-style: normal;
-//   font-weight: 700;
-//   line-height: 88px; /* 100% */
-//   letter-spacing: -2.5px;
-// `;
-
 const GridItem = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.between('sm', 'md')]: {
     width: '706px',
     height: '72px',
   },
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
     width: '1110px',
     height: '88px',
   },
@@ -65,6 +52,7 @@ const StyledButton = styled(Button)`
     line-height: 26px; /* 162.5% */
     letter-spacing: 2.286px;
     text-wrap: nowrap;
+    padding: 0;
   }
   &.MuiButton-root:hover {
     color: #4ee1a0;
@@ -76,7 +64,7 @@ const GridContainer = styled(Grid)(({ theme }) => ({
     width: '708px',
     marginTop: '100px',
   },
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
     width: '1110px',
     maxHeight: '1767px',
     marginTop: '140px',
@@ -90,7 +78,7 @@ const PortfolioGridContainer = styled(Grid)(({ theme }) => ({
     marginTop: '60px',
     gap: '60px 20px',
   },
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
     width: '1110px',
     height: '1599px',
     marginTop: '80px',

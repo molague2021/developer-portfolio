@@ -7,11 +7,13 @@ import { FooterAboutMeSection } from './FooterAboutMeSection';
 const StyledDiv = styled('div')(({ theme }) => ({
   background: '#242424',
   [theme.breakpoints.between('sm', 'md')]: {
+    minWidth: '768px',
     height: '806px',
     flexShrink: 0,
     overflowX: 'hidden',
   },
-  [theme.breakpoints.up('xl')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
+    minWidth: '1440px',
     height: '675px',
     flexShrink: 0,
   },
@@ -23,10 +25,10 @@ const StyledContainer = styled(Grid)(({ theme }) => ({
     flexDirection: 'row',
     maxWidth: '768px',
   },
-  [theme.breakpoints.up('xl')]: {
-    maxWidth: '768px',
+  [theme.breakpoints.between('md', 'xl')]: {
+    maxWidth: '1440px',
     margin: '0 auto',
-    padding: '84px 28px 92px',
+    padding: '84px 165px 92px',
     textAlign: 'center',
     flexDirection: 'column',
   },

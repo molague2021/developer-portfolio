@@ -18,23 +18,30 @@ const theme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
-      sm: 375,
+      sm: 376,
       md: 769,
-      xl: 1440,
+      xl: 8000,
     },
   },
 });
 
 const StyledGrid = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    width: '375px',
+    margin: '0 auto',
+    padding: '20px 16px',
+    textAlign: 'center',
+    overflow: 'hidden',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
-    maxWidth: '1440px',
+    width: '768px',
     margin: '0 auto',
     padding: '29px 30px',
     textAlign: 'center',
     overflow: 'hidden',
   },
-  [theme.breakpoints.up('xl')]: {
-    maxWidth: '1440px',
+  [theme.breakpoints.between('md', 'xl')]: {
+    width: '1440px',
     margin: '0 auto',
     padding: '39px 165px',
     textAlign: 'center',

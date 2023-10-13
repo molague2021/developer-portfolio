@@ -11,7 +11,7 @@ const StyledDivider = styled('div')(({ theme }) => ({
     flexShrink: '0',
     background: 'white',
   },
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
     width: '1110px',
     height: '1px',
     flexShrink: '0',
@@ -26,9 +26,10 @@ const StyledContainer = styled(Grid)(({ theme }) => ({
     height: '451px',
     position: 'relative',
   },
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
     maxWidth: '1110px',
     height: '327px',
+    marginTop: '77px',
     position: 'relative',
   },
 }));
@@ -42,7 +43,7 @@ const StyledGrid = styled(Grid)(({ theme }) => ({
     marginTop: '386px',
     marginLeft: '540px',
   },
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.between('md', 'xl')]: {
     marginTop: '252px',
     right: '-415px',
   },
