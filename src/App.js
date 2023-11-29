@@ -43,7 +43,7 @@ const StyledGrid = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.between('md', 'xl')]: {
     width: '1440px',
     margin: '0 auto',
-    padding: '39px 165px',
+    padding: '39px 162px',
     textAlign: 'center',
     overflow: 'hidden',
   },

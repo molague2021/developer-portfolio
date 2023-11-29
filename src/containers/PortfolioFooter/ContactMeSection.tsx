@@ -240,7 +240,7 @@ const StyledRingImgGrid = styled(Grid)(({ theme }) => ({
     flexShrink: '0',
     position: 'absolute',
     marginTop: '243px',
-    left: '-265px',
+    left: '-368px',
   },
 }));
 

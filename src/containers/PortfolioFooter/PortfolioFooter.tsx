@@ -13,8 +13,11 @@ const StyledDiv = styled('div')(({ theme }) => ({
     overflowX: 'hidden',
   },
   [theme.breakpoints.between('md', 'xl')]: {
-    minWidth: '1440px',
+    width: '1440px',
     height: '675px',
+    margin: '0 auto',
+    padding: '39px 162px',
+    overflow: 'hidden',
     flexShrink: 0,
   },
 }));
@@ -27,8 +30,6 @@ const StyledContainer = styled(Grid)(({ theme }) => ({
   },
   [theme.breakpoints.between('md', 'xl')]: {
     maxWidth: '1440px',
-    margin: '0 auto',
-    padding: '84px 165px 92px',
     textAlign: 'center',
     flexDirection: 'column',
   },
