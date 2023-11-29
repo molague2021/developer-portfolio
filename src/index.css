@@ -2,10 +2,4 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  @media only screen and (min-width: 376px) and (max-width: 769px) {
-    overflow: hidden;
-  }
-  @media only screen and (min-width: 1440px) {
-    overflow: hidden;
-  }
 }

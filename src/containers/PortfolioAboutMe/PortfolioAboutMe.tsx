@@ -4,6 +4,12 @@ import { Stack, Grid, styled, Button } from '@mui/material';
 import pattent_rings from '../../assets/pattern_rings.svg';
 import { AboutMeHeader } from '../../components/AboutMeHeader';
 
+const StyledGrid = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    width: '375px',
+  },
+}));
+
 const StyledButton = styled(Button)`
   &.MuiButton-root {
     color: white;
@@ -34,7 +40,7 @@ export const PortfolioAboutMe = ({
   onContactMeOnClick,
 }: PortfolioAboutMeProps) => {
   return (
-    <Grid sx={{ height: '688px', position: 'relative' }}>
+    <StyledGrid sx={{ height: '688px', position: 'relative' }}>
       <Grid
         container
         sx={{
@@ -66,6 +72,6 @@ export const PortfolioAboutMe = ({
           <StyledButtonUnderline />
         </Stack>
       </Grid>
-    </Grid>
+    </StyledGrid>
   );
 };

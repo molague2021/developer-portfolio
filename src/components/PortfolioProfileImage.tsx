@@ -5,11 +5,18 @@ import image_profile_tablet from '../assets/image-profile-tablet.webp';
 import image_profile_mobile from '../assets/image-profile-mobile.webp';
 import pattern_circle from '../assets/pattern_circle.svg';
 
+const StyledGrid = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    width: '174px',
+  },
+}));
+
 const StyledImageGrid = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.between('xs', 'sm')]: {
     position: 'absolute',
+    width: '174px',
     marginLeft: '0px',
-    top: '0px',
+    top: '-92px',
   },
   [theme.breakpoints.between('sm', 'md')]: {
     position: 'absolute',
@@ -25,7 +32,6 @@ const StyledImageGrid = styled(Grid)(({ theme }) => ({
 
 const StyledImg = styled('img')(({ theme }) => ({
   [theme.breakpoints.between('xs', 'sm')]: {
-    background: `url(${image_profile_mobile}), #24242400, #242424 0px 0px / 100% 100% no-repeat`,
     width: '174.207px',
     height: '383px',
     flexShrink: '0',
@@ -47,6 +53,10 @@ const StyledStack = styled(Stack)(({ theme }) => ({
   height: '129px',
   zIndex: '2',
   position: 'absolute',
+  [theme.breakpoints.between('xs', 'sm')]: {
+    top: '162px',
+    marginLeft: '205px',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     top: '418px',
     marginLeft: '655px',
@@ -60,11 +70,11 @@ const StyledStack = styled(Stack)(({ theme }) => ({
 export const PortfolioProfileImage = () => {
   const theme = useTheme();
 
-  const mobileSizeView = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+  const mobileSizeView = useMediaQuery(theme.breakpoints.between('xs', 'sm'));
   const tabletSizeView = useMediaQuery(theme.breakpoints.between('sm', 'md'));
 
   return (
-    <Grid sx={{ position: 'relative' }}>
+    <StyledGrid sx={{ position: 'relative' }}>
       <StyledImageGrid container>
         <StyledImg
           src={
@@ -82,6 +92,6 @@ export const PortfolioProfileImage = () => {
           style={{ width: '129px', height: '129px', flexShrink: '0' }}
         />
       </StyledStack>
-    </Grid>
+    </StyledGrid>
   );
 };

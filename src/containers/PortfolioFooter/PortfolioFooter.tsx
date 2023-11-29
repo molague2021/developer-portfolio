@@ -7,7 +7,7 @@ import { FooterAboutMeSection } from './FooterAboutMeSection';
 const StyledDiv = styled('div')(({ theme }) => ({
   background: '#242424',
   [theme.breakpoints.between('sm', 'md')]: {
-    minWidth: '768px',
+    maxWidth: '768px',
     height: '806px',
     flexShrink: 0,
     overflowX: 'hidden',

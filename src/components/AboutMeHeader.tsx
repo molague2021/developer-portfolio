@@ -1,6 +1,7 @@
 import React from 'react';
 import { Stack, Grid, Typography, styled, useTheme } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
+
 const StyledHeading = styled(Typography)(({ theme }) => ({
   [theme.breakpoints.between('sm', 'md')]: {
     color: 'var(--white, #fff)',
