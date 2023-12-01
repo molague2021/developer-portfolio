@@ -1,12 +1,28 @@
 import React from 'react';
-import { Stack, Grid, styled, Button } from '@mui/material';
+import { Stack, Grid, styled, Button, useTheme } from '@mui/material';
 
 import pattent_rings from '../../assets/pattern_rings.svg';
 import { AboutMeHeader } from '../../components/AboutMeHeader';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const StyledGrid = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.between('xs', 'sm')]: {
-    width: '375px',
+    width: '343px',
+    height: '575px',
+  },
+  [theme.breakpoints.between('sm', 'xl')]: {
+    height: '688px',
+  },
+}));
+
+const StyledImageGrid = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    marginLeft: '-347px',
+    marginTop: '32px',
+  },
+  [theme.breakpoints.between('sm', 'xl')]: {
+    marginTop: '62px',
+    left: -265,
   },
 }));
 
@@ -39,26 +55,34 @@ interface PortfolioAboutMeProps {
 export const PortfolioAboutMe = ({
   onContactMeOnClick,
 }: PortfolioAboutMeProps) => {
+  const theme = useTheme();
+  const mobileSizeView = useMediaQuery(theme.breakpoints.between('xs', 'sm'));
+
   return (
-    <StyledGrid sx={{ height: '688px', position: 'relative' }}>
-      <Grid
+    <StyledGrid sx={{ position: 'relative' }}>
+      <StyledImageGrid
         container
         sx={{
           width: '530px',
           height: '129px',
           flexShrink: '0',
           position: 'absolute',
-          marginTop: '62px',
-          left: -265,
         }}
       >
         <img
           src={pattent_rings}
           style={{ width: '530px', height: '129px', flexShrink: '0' }}
         />
-      </Grid>
+      </StyledImageGrid>
       <AboutMeHeader />
-      <Grid item display="flex" sx={{ marginTop: '66px' }}>
+      <Grid
+        item
+        display="flex"
+        sx={{
+          marginTop: mobileSizeView ? '24px' : '66px',
+          justifyContent: mobileSizeView ? 'center' : '',
+        }}
+      >
         <Stack
           display="flex"
           flexDirection="column"
@@ -68,7 +92,12 @@ export const PortfolioAboutMe = ({
             gap: '10px',
           }}
         >
-          <StyledButton onClick={onContactMeOnClick}>CONTACT ME</StyledButton>
+          <StyledButton
+            sx={{ padding: mobileSizeView ? '0 8px' : '6px 8px' }}
+            onClick={onContactMeOnClick}
+          >
+            CONTACT ME
+          </StyledButton>
           <StyledButtonUnderline />
         </Stack>
       </Grid>

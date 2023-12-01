@@ -35,6 +35,7 @@ const StyledImg = styled('img')(({ theme }) => ({
     width: '174.207px',
     height: '383px',
     flexShrink: '0',
+    zIndex: '2',
   },
   [theme.breakpoints.between('sm', 'md')]: {
     width: '322px',
