@@ -5,6 +5,12 @@ import { portfolioExperienceList } from '../../constants/portfolioExperience';
 import pattent_rings from '../../assets/pattern_rings.svg';
 
 const StyledDivider = styled('div')(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    width: '345px',
+    height: '1px',
+    flexShrink: '0',
+    background: 'white',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     width: '706px',
     height: '1px',
@@ -21,6 +27,12 @@ const StyledDivider = styled('div')(({ theme }) => ({
 
 const StyledContainer = styled(Grid)(({ theme }) => ({
   width: 'auto',
+  [theme.breakpoints.between('xs', 'sm')]: {
+    maxWidth: '345px',
+
+    position: 'relative',
+    marginTop: '60px',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     maxWidth: '708px',
     height: '451px',
@@ -34,11 +46,15 @@ const StyledContainer = styled(Grid)(({ theme }) => ({
   },
 }));
 
-const StyledGrid = styled(Grid)(({ theme }) => ({
+const StyledImgGrid = styled(Grid)(({ theme }) => ({
   width: '530px',
   height: '129px',
   flexShrink: '0',
   position: 'absolute',
+  [theme.breakpoints.between('xs', 'sm')]: {
+    marginTop: '543px',
+    marginLeft: '173px',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     marginTop: '386px',
     marginLeft: '540px',
@@ -49,67 +65,99 @@ const StyledGrid = styled(Grid)(({ theme }) => ({
   },
 }));
 
-const StyledHeading = styled(Typography)`
-  color: white;
-  font-feature-settings: 'clig' off, 'liga' off;
+const StyledGridItem = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    height: '604px',
+    alignContent: 'center',
+    gap: '24px',
+  },
+  [theme.breakpoints.between('sm', 'xl')]: {
+    alignItems: 'flex-end',
+    gap: '7px',
+    maxWidth: '1110px',
+  },
+}));
 
-  /* Heading (L) */
-  font-family: Space Grotesk;
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 56px; /* 116.667% */
-  letter-spacing: -1.5px;
-`;
+const StyledExperienceContainer = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    height: '67px',
+    alignItems: 'center',
+  },
+  [theme.breakpoints.between('sm', 'xl')]: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    height: '98px',
+    gap: '14px',
+  },
+}));
 
-const StyledBody = styled(Typography)`
-  color: white;
-  font-feature-settings: 'clig' off, 'liga' off;
+const StyledHeading = styled(Typography)(({ theme }) => ({
+  color: `var(--White, #FFF)`,
+  fontFeatureSettings: `'clig' off, 'liga' off`,
+  [theme.breakpoints.between('xs', 'sm')]: {
+    fontFamily: 'Space Grotesk',
+    fontSize: '32px',
+    fontStyle: 'normal',
+    fontWeight: '700',
+    lineHeight: '40px' /* 116.667% */,
+    letterSpacing: '-1px',
+  },
+  [theme.breakpoints.between('sm', 'xl')]: {
+    fontFamily: 'Space Grotesk',
+    fontSize: '48px',
+    fontStyle: 'normal',
+    fontWeight: '700',
+    lineHeight: '56px' /* 116.667% */,
+    letterSpacing: '-1.5px',
+  },
+}));
 
-  /* Body */
-  font-family: Space Grotesk;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 28px; /* 155.556% */
-`;
+const StyledBody = styled(Typography)(({ theme }) => ({
+  color: `var(--White, #FFF)`,
+  fontFeatureSettings: `'clig' off, 'liga' off`,
+  [theme.breakpoints.between('xs', 'sm')]: {
+    fontFamily: 'Space Grotesk',
+    fontSize: '18px',
+    fontStyle: 'normal',
+    fontWeight: '500',
+    lineHeight: '26px',
+  },
+  [theme.breakpoints.between('sm', 'xl')]: {
+    fontFamily: 'Space Grotesk',
+    fontSize: '18px',
+    fontStyle: 'normal',
+    fontWeight: '500',
+    lineHeight: '28px',
+  },
+}));
 
 export const PortfolioExperience = () => {
   return (
     <StyledContainer container>
       <StyledDivider />
-      <Grid
-        display="flex"
-        flexWrap="wrap"
-        alignItems="flex-end"
-        gap="7px"
-        sx={{
-          maxWidth: '1110px',
-        }}
-      >
+      <StyledGridItem display="flex" flexWrap="wrap">
         {portfolioExperienceList.map((experience) => {
           return (
-            <Grid
+            <StyledExperienceContainer
               item
               display="flex"
-              flexDirection="column"
-              alignItems="flex-start"
-              justifyContent="center"
-              gap="14px"
-              sx={{ minWidth: '345px', height: '98px' }}
+              sx={{ minWidth: '345px' }}
             >
               <StyledHeading>{experience.name}</StyledHeading>
               <StyledBody>{`${experience.years} Years Experience`}</StyledBody>
-            </Grid>
+            </StyledExperienceContainer>
           );
         })}
-      </Grid>
-      <StyledGrid sx={{}}>
+      </StyledGridItem>
+      <StyledImgGrid>
         <img
           src={pattent_rings}
           style={{ width: '530px', height: '129px', flexShrink: '0' }}
         />
-      </StyledGrid>
+      </StyledImgGrid>
     </StyledContainer>
   );
 };

@@ -26,9 +26,6 @@ const StyledGrid = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.between('xs', 'sm')]: {
     width: '154px',
     height: '72px',
-    // margin: '0 auto',
-    // padding: '20px 16px',
-    // textAlign: 'center',
     flexDirection: 'column',
     overflow: 'hidden',
   },
