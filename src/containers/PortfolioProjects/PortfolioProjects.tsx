@@ -1,9 +1,26 @@
 import React from 'react';
-import { Grid, Stack, Typography, styled, Button } from '@mui/material';
+import {
+  Grid,
+  Stack,
+  Typography,
+  styled,
+  Button,
+  useTheme,
+} from '@mui/material';
 import { PortfolioProjectCard } from '../../components/PortfolioProjectCard';
 import { portfolioProjects } from '../../constants/portfolioProjects';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const StyleProjectsHeading = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    color: 'var(--white, #fff)',
+    fontSize: '40px',
+    fontFamily: 'Space Grotesk',
+    fontStyle: 'normal',
+    fontWeight: '700',
+    lineHeight: '40px' /* 100% */,
+    letterSpacing: '-1.136px',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     color: 'var(--white, #fff)',
     fontSize: '72px',
@@ -26,6 +43,10 @@ const StyleProjectsHeading = styled(Typography)(({ theme }) => ({
 }));
 
 const GridItem = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    width: '345px',
+    height: '40px',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     width: '706px',
     height: '72px',
@@ -60,6 +81,10 @@ const StyledButton = styled(Button)`
 `;
 
 const GridContainer = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    width: '345px',
+    marginTop: '80px',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     width: '708px',
     marginTop: '100px',
@@ -72,6 +97,12 @@ const GridContainer = styled(Grid)(({ theme }) => ({
 }));
 
 const PortfolioGridContainer = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    width: '345px',
+    maxHeight: '2828px',
+    marginTop: '40px',
+    gap: '40px 20px',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     width: '708px',
     maxHeight: '1314px',
@@ -92,6 +123,8 @@ interface PortfolioProjectsProps {
 export const PortfolioProjects = ({
   onContactMeOnClick,
 }: PortfolioProjectsProps) => {
+  const theme = useTheme();
+  const mobileSizeView = useMediaQuery(theme.breakpoints.between('xs', 'sm'));
   return (
     <GridContainer container flexShrink="0">
       <GridItem item display="flex" justifyContent="space-between">
@@ -118,7 +151,6 @@ export const PortfolioProjects = ({
         justifyContent="space-between"
       >
         {portfolioProjects.map((project, index) => {
-          console.log(project);
           return <PortfolioProjectCard index={index} project={project} />;
         })}
       </PortfolioGridContainer>

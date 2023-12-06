@@ -67,7 +67,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   [`&.MuiButton-root:hover`]: {
     color: '#4ee1a0',
   },
-  [theme.breakpoints.between('sm', 'md')]: {
+  [theme.breakpoints.between('xs', 'md')]: {
     width: '136px',
     padding: 0,
     height: '26px',
@@ -76,6 +76,11 @@ const StyledButton = styled(Button)(({ theme }) => ({
 }));
 
 const StyledStack = styled(Stack)(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    width: '345px',
+    height: '398px',
+    flexShrink: '0',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     width: '342px',
     height: '398px',
@@ -97,8 +102,8 @@ const StyledImgGrid = styled(Grid)(({ theme }) => ({
 }));
 
 const StyledImg = styled('img')(({ theme }) => ({
-  [theme.breakpoints.between('sm', 'md')]: {
-    width: '346px',
+  [theme.breakpoints.between('xs', 'md')]: {
+    width: '345px',
     height: '253px',
     flexShrink: '0',
   },
@@ -113,9 +118,7 @@ export const PortfolioProjectCard = ({ index, project }: CardProps) => {
   const [displayMenu, setDisplayMenu] = useState(false);
 
   const theme = useTheme();
-  console.log({ theme });
   const desktopSizeView = useMediaQuery(theme.breakpoints.up('md'));
-  console.log({ desktopSizeView });
 
   return (
     <StyledStack
@@ -181,7 +184,9 @@ export const PortfolioProjectCard = ({ index, project }: CardProps) => {
           sx={{ width: '271px', height: '38px' }}
         >
           <Grid item display="flex" flexDirection="column" gap="10px">
-            <StyledButton>VIEW PROJECT</StyledButton>
+            <StyledButton sx={{ padding: '6px 8px 6px 0' }}>
+              VIEW PROJECT
+            </StyledButton>
             <StyledProjectButtonUnderline sx={{ width: '138px' }} />
           </Grid>
           <Grid

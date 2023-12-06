@@ -4,7 +4,12 @@ import project_3_large from '../assets/thumbnail-project-3-large.webp';
 import project_4_large from '../assets/thumbnail-project-4-large.webp';
 import project_5_large from '../assets/thumbnail-project-5-large.webp';
 import project_6_large from '../assets/thumbnail-project-6-large.webp';
-
+import project_1_small from '../assets/thumbnail_project_1_small.webp';
+import project_2_small from '../assets/thumbnail_project_2_small.webp';
+import project_3_small from '../assets/thumbnail-project-3-small.webp';
+import project_4_small from '../assets/thumbnail-project-4-small.webp';
+import project_5_small from '../assets/thumbnail-project-5-small.webp';
+import project_6_small from '../assets/thumbnail-project-6-small.webp';
 export const portfolioProjects = [
   {
     id: 1,

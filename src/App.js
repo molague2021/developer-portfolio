@@ -27,10 +27,8 @@ const theme = createTheme({
 
 const StyledGrid = styled(Grid)(({ theme }) => ({
   [theme.breakpoints.between('xs', 'sm')]: {
-    // width: '375px',
     margin: '0 auto',
-    padding: '20px 16px',
-    // textAlign: 'center',
+    padding: '20px 16px 80px',
     alignItems: 'center',
     overflow: 'hidden',
   },
