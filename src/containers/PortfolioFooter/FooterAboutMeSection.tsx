@@ -1,8 +1,14 @@
 import React from 'react';
-import { Grid, styled, Typography } from '@mui/material';
+import { Grid, styled, Typography, useTheme } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { SocialMedia } from '../../components/SocialMedia';
 
 const StyledContainer = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    padding: '0 16px',
+    width: '375px',
+    justifyContent: 'center',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     padding: '0 15px',
     width: '768px',
@@ -15,6 +21,9 @@ const StyledContainer = styled(Grid)(({ theme }) => ({
 }));
 
 const StyledItemGrid = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    gap: '344px',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     gap: '344px',
   },
@@ -25,6 +34,13 @@ const StyledItemGrid = styled(Grid)(({ theme }) => ({
 }));
 
 const StyledNameSocialMediaGrid = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    marginTop: '39px',
+    flexDirection: 'column',
+    width: '154px',
+    height: '72px',
+    justifyContent: 'space-between',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     gap: '344px',
   },
@@ -37,6 +53,12 @@ const StyledNameSocialMediaGrid = styled(Grid)(({ theme }) => ({
 }));
 
 const StyledDivider = styled('div')(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    background: `var(--White, #FFF)`,
+    width: '343px',
+    height: '1px',
+    flexShrink: '0',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     background: `var(--White, #FFF)`,
     width: '708px',
@@ -51,15 +73,31 @@ const StyledDivider = styled('div')(({ theme }) => ({
   },
 }));
 
-const StyledTypography = styled(Typography)`
-  font-family: Space Grotesk;
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 32px; /* 100% */
-  letter-spacing: -0.444px;
-`;
+const StyledTypography = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    color: 'var(--white, #fff)',
+    fontFamily: 'Space Grotesk',
+    fontSize: '24px',
+    fontStyle: 'normal',
+    fontWeight: '700',
+    lineHeight: '32px',
+    letterSpacing: '-0.333px',
+  },
+  [theme.breakpoints.between('sm', 'xl')]: {
+    color: 'var(--white, #fff)',
+    fontFamily: 'Space Grotesk',
+    fontSize: '32px',
+    fontStyle: 'normal',
+    fontWeight: '700',
+    lineHeight: '32px',
+    letterSpacing: '-0.444px',
+  },
+}));
+
 export const FooterAboutMeSection = () => {
+  const theme = useTheme();
+  const mobileSizeView = useMediaQuery(theme.breakpoints.between('xs', 'sm'));
+
   return (
     <StyledContainer container alignContent="space-between">
       <StyledItemGrid
@@ -80,7 +118,7 @@ export const FooterAboutMeSection = () => {
           item
           display="flex"
           justifyContent="space-between"
-          sx={{ minWidth: '200px' }}
+          sx={{ minWidth: mobileSizeView ? '154px' : '200px' }}
         >
           <SocialMedia />
         </Grid>

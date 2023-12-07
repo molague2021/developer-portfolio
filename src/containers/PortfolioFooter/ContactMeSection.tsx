@@ -8,7 +8,9 @@ import {
   TextField,
   Button,
   SvgIcon,
+  useTheme,
 } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import pattent_rings from '../../assets/pattern_rings.svg';
 
 import { createRecord } from '../../services/AirtableServices';
@@ -21,7 +23,6 @@ const StyledButtonUnderline = styled('div')`
 `;
 
 const StyledTextField = styled(TextField)`
-  width: 445px;
   .MuiInput-root {
     height: 43px;
   }
@@ -134,6 +135,15 @@ const StyledButton = styled(Button)`
 
 const StyledTitle = styled(Typography)(({ theme }) => ({
   color: 'white',
+  [theme.breakpoints.between('xs', 'sm')]: {
+    fontFamily: 'Space Grotesk',
+    fontSize: '40px',
+    fontStyle: 'normal',
+    fontWeight: '700',
+    lineHeight: '40px' /* 100% */,
+    letterSpacing: '-1.136px',
+    textAlign: 'center',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     fontFamily: 'Space Grotesk',
     fontSize: '72px',
@@ -157,6 +167,14 @@ const StyledTitle = styled(Typography)(({ theme }) => ({
 const StyledSubtitle = styled(Typography)(({ theme }) => ({
   color: 'white',
   fontFeatureSettings: 'clig off, liga off',
+  [theme.breakpoints.between('xs', 'sm')]: {
+    fontFamily: 'Space Grotesk',
+    fontSize: '16px',
+    fontStyle: 'normal',
+    fontWeight: '500',
+    lineHeight: '26px',
+    textAlign: 'center',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     fontFamily: 'Space Grotesk',
     fontSize: '18px',
@@ -176,6 +194,12 @@ const StyledSubtitle = styled(Typography)(({ theme }) => ({
 }));
 
 const StyledContainer = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    maxWidth: '375px',
+    padding: '60px 16px',
+    flexShrink: 0,
+    position: 'relative',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     maxWidth: '768px',
     padding: '60px 129px',
@@ -191,6 +215,13 @@ const StyledContainer = styled(Grid)(({ theme }) => ({
 }));
 
 const StyledGridItem = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    width: '343px',
+    alignItems: 'center',
+    gap: '20px',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     flexDirection: 'column',
     justifyContent: 'center',
@@ -205,6 +236,12 @@ const StyledGridItem = styled(Grid)(({ theme }) => ({
 }));
 
 const StyledContactStack = styled(Stack)(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    width: '343px',
+    height: '138px',
+    gap: '20px',
+    alignItems: 'center',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     width: '445px',
     height: '176px',
@@ -219,13 +256,28 @@ const StyledContactStack = styled(Stack)(({ theme }) => ({
 }));
 
 const StyledForm = styled('form')(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    marginTop: '50px',
+    width: '343px',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     marginTop: '48px',
+    width: '445px',
   },
-  [theme.breakpoints.between('md', 'xl')]: {},
+  [theme.breakpoints.between('md', 'xl')]: {
+    width: '445px',
+  },
 }));
 
 const StyledRingImgGrid = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.between('xs', 'sm')]: {
+    width: '530px',
+    height: '129px',
+    flexShrink: '0',
+    position: 'absolute',
+    marginTop: '375px',
+    left: '-340px',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     width: '530px',
     height: '129px',
@@ -272,6 +324,8 @@ export const ContactMeSection = () => {
     watch,
     formState: { errors },
   } = useForm<Inputs>();
+  const theme = useTheme();
+  const mobileSizeView = useMediaQuery(theme.breakpoints.between('xs', 'sm'));
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -336,12 +390,13 @@ export const ContactMeSection = () => {
             display="flex"
             alignItems="flex-start"
             gap="32px"
-            sx={{ width: '445px', height: '327px' }}
+            sx={{ height: '327px' }}
           >
             <Stack>
               <StyledTextField
                 {...register('name', { required: true })}
                 color="primary"
+                sx={{ width: mobileSizeView ? '343px' : '445px' }}
                 error={errors?.name?.type === 'required'}
                 helperText={errorMessageCreator(errors?.name?.type)}
                 FormHelperTextProps={{ sx: { textAlign: 'right' } }}
@@ -390,6 +445,7 @@ export const ContactMeSection = () => {
                   pattern: EMAIL_VALIDATION_REGEX,
                 })}
                 id="email"
+                sx={{ width: mobileSizeView ? '343px' : '445px' }}
                 error={
                   errors?.email?.type === 'required' ||
                   errors?.email?.type === 'pattern'
@@ -437,6 +493,7 @@ export const ContactMeSection = () => {
               <StyledMultiLineTextField
                 {...register('message', { required: true })}
                 id="message"
+                sx={{ width: mobileSizeView ? '343px' : '445px' }}
                 error={errors?.message?.type === 'required'}
                 helperText={errorMessageCreator(errors?.message?.type)}
                 FormHelperTextProps={{ sx: { textAlign: 'right' } }}
