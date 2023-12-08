@@ -1,5 +1,6 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
+const { ProvidePlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -50,6 +51,9 @@ module.exports = {
       ignoreStub: true,
       path: `./.env`,
       defaults: true,
+    }),
+    new ProvidePlugin({
+      process: 'process/browser',
     }),
     new HtmlWebpackPlugin({ template: './public/index.html' }),
   ],
