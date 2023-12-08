@@ -2,8 +2,6 @@ const path = require('path');
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const mode = process.env.NODE_ENV;
-
 module.exports = {
   mode: 'development',
   entry: './src/index.js',
@@ -50,7 +48,7 @@ module.exports = {
   plugins: [
     new Dotenv({
       ignoreStub: true,
-      path: `./.env.${mode}`,
+      path: `./.env`,
       defaults: true,
     }),
     new HtmlWebpackPlugin({ template: './public/index.html' }),
