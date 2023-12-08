@@ -4,7 +4,7 @@
   "description": "Developer portfolio",
   "main": "./src/index.js",
   "scripts": {
-    "build": "webpack --config ./config/webpack.config.js",
+    "build": "webpack --config ./config/webpack.config.js --mode production",
     "start": "webpack serve --config ./config/webpack.config.js",
     "test": "test"
   },

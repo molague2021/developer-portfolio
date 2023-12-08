@@ -51,5 +51,6 @@ module.exports = {
       path: `./.env`,
       defaults: true,
     }),
+    new HtmlWebpackPlugin({ template: './public/index.html' }),
   ],
 };
